@@ -31,4 +31,19 @@ def contact_support():
     """Provides contact information for customer support"""
     return "You can reach our suport team at support@example.com or call us at +44 9876543210."
 
+# Adding tools to out agent, and setting up the model
+
+tools = [search_knowldege_base, contact_support]  # list of the available tools defined
+
+# Initialising OpenAI model
+model = ChatOpenAI(
+    base_url = base_url,
+    api_key = api_key,
+    model = "meta-llama/llama-3.1-70b-instruction:free",
+)
+
+#Creating the agent
+app = create_react_agent(model,tools)
+
+
 
