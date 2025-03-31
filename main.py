@@ -45,5 +45,18 @@ model = ChatOpenAI(
 #Creating the agent
 app = create_react_agent(model,tools)
 
+## Sending message to the agent
+while True:
+    user_input = input("\nYou: ") # Getting user input
+    if user_input.lower() in ["exit","quit"]:
+        print("Exiting chat.")
+        break
+    #Sending user input to the agent
+    final_state = app.invoke(
+        {"messages": [{"role": "user", "content": user_input}]})
 
-
+    #Extract and print the agent's response
+    if "message" in final_state and final_state["messages"]:
+        print("AI:", final_state["messages"][-1]["content"])
+    else:
+        print("I'm sorry, I could't find relevant information, Please contact support.")
