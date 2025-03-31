@@ -39,7 +39,7 @@ tools = [search_knowldege_base, contact_support]  # list of the available tools 
 model = ChatOpenAI(
     base_url = base_url,
     api_key = api_key,
-    model = "meta-llama/llama-3.1-70b-instruction:free",
+    model = "meta-llama/llama-3.1-70b-instruct:free",
 )
 
 #Creating the agent
